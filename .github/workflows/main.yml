@@ -45,5 +45,7 @@ jobs:
           name: skimmatri
 
       - name: skim
-        run: ./skim
+        run: run: |
+                chmod +x ./skim
+                ./skim
   
