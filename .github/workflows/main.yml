@@ -16,6 +16,10 @@ jobs:
           COMPILER=$(root-config --cxx)
           FLAGS=$(root-config --cflags --libs)
           $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
+      - uses: actions/upload-artifact@v3
+      with:
+        name: skimmatri
+        path: skim
   build_skim_latest:
     needs: greeting
     runs-on: ubuntu-latest
@@ -36,6 +40,9 @@ jobs:
     steps:
       - name: checkout repository
         uses: actions/checkout@v3
+      - uses: actions/download-artifact@v3
+        with:
+          name: skimmatri
 
       - name: skim
         run: ./skim
